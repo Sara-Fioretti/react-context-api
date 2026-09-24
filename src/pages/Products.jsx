@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import { BudgetProvider, useBudgetMode } from "../contexts/BudgetContext";
+import { useContext } from "react";
 import Card from "./Card";
 
 function Products() {
@@ -11,11 +13,21 @@ function Products() {
             .then((data) => setProducts(data))
     }
     useEffect(fetchData, [])
+
+    const {budgetMode} = useBudgetMode()
+    function filterCard() {
+        if (price <=30){
+            return Card
+        }
+    }
+
     return (
         <div className="d-flex flex-wrap gap-2 p-5">
-
+            
             {
-                products.map((product) => (
+                products
+                .filter((product)=> !budgetMode || product.price <=30)
+                .map((product) => (
                     <Card
                         key={product.id}
                         id={product.id}

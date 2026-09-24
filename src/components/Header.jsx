@@ -7,6 +7,7 @@ function Header() {
     const {budgetMode, setBudgetMode} = useBudgetMode()
     function handleClick (){
         setBudgetMode(!budgetMode)
+        
     }
     return (
         <nav className="navbar bg-primary">

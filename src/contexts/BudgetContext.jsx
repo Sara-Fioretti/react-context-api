@@ -13,9 +13,9 @@ function BudgetProvider({children}) {
     )
 }
 
-function handleBudgetMode (){
-    const budget = useContext(BudgetContex)
+function useBudgetMode (){
+    const budget = useContext(BudgetContext)
     return budget
 }
 
-export{BudgetProvider, useContext}
+export{BudgetProvider,useBudgetMode}
